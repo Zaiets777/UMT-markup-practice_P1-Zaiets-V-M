@@ -1,0 +1,670 @@
+/* ==============================================
+   ЗМІННІ (Кольори, шрифти, розміри)
+   ============================================== */
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  --primary-text: #000000;
+  --primary-bg: #FFFFFF;
+  --secondary-bg: #F5F5F5;
+  --primary-button-bg: #80EB21; /* Зелений колір з макета */
+  --primary-button-text: #000000;
+  --size-text: 16px;
+  --lh-text: 1.5;
+  --size-h2: 34px;
+  --lh-heading: 1.2;
+  --size-hero: 53px;
+  --weight-hero: 600;
+}
+
+/* ==============================================
+   БАЗОВІ НАЛАШТУВАННЯ
+   ============================================== */
+
+/* Скидаємо стандартні стилі браузера для посилань та списків */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html:has(body.menu-open) {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--primary-text);
+  background-color: var(--primary-bg);
+  font-size: var(--size-text);
+  line-height: var(--lh-text);
+  overflow-x: hidden;
+}
+
+.section-wrapper {
+  padding: 64px 0;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.text {
+  font-size: var(--size-text);
+  line-height: var(--lh-text);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: var(--lh-heading);
+  margin-bottom: 24px;
+}
+/* ==============================================
+   КНОПКИ ТА ПОСИЛАННЯ
+   ============================================== */
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 100px;
+  border: none;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: var(--lh-text);
+  color: var(--primary-button-text);
+  background: var(--primary-button-bg);
+  padding: 8px 20px;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  opacity: 0.5;
+}
+
+.primary-button:active {
+  background: #4E544D;
+  color: #FFFFFF;
+  opacity: 1;
+  transform: scale(0.98);
+}
+
+.primary-button:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.general-link {
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.general-link:hover,
+.general-link:focus-visible {
+  opacity: 0.7;
+}
+
+/* ==============================================
+   ШАПКА (HEADER)
+   ============================================== */
+.header {
+  padding: 12px 0;
+  position: relative;
+  z-index: 20;
+  background-color: var(--primary-bg);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo-link {
+  display: flex;
+}
+
+.navigation-list {
+  display: none;
+}
+
+.header-button {
+  display: none;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-text);
+  stroke: none;
+}
+
+.menu-icon__close {
+  display: none;
+}
+
+.menu-button.is-open .menu-icon__close {
+  display: inline;
+}
+
+.menu-button.is-open .menu-icon__burger {
+  display: none;
+}
+
+/* ==============================================
+   ГОЛОВНА СЕКЦІЯ (HERO)
+   ============================================== */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  background-color: var(--secondary-bg);
+  /* Виправлено шлях та формат під твій проєкт */
+  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: calc(50% - 30px) center;
+  background-repeat: no-repeat;
+}
+
+.hero-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.hero-content {
+  text-align: left;
+  padding: 48px 0;
+  width: 100%;
+}
+
+.hero-content .primary-button {
+  max-width: 334px;
+  width: 100%;
+  padding: 10px 24px;
+}
+
+.hero-section .hero-title {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: var(--weight-hero);
+  line-height: var(--lh-heading);
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  max-width: 243px;
+}
+
+.hero-text {
+  margin-bottom: 32px;
+  max-width: 247px;
+}
+
+/* ==============================================
+   ПРО НАС (ABOUT)
+   ============================================== */
+.about-block {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.about-content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-image-img {
+  border-radius: 16px;
+  width: 100%;
+  height: 428px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ==============================================
+   ПОПУЛЯРНІ БУКЕТИ (BESTSELLERS)
+   ============================================== */
+.bestsellers-section .section-title {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.bestsellers-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 24px;
+}
+
+.bestsellers-list::-webkit-scrollbar {
+  display: none;
+}
+
+.bestsellers-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.bestsellers-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.bestsellers-item-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: var(--lh-heading);
+  margin-bottom: 0;
+}
+
+.bestsellers-item-text {
+  font-size: 14px;
+  line-height: var(--lh-text);
+}
+
+.bestsellers-item-price {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+/* ==============================================
+   КАТАЛОГ (BOUQUETS)
+   ============================================== */
+.bouquets-section .section-title {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.title-text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.bouquets-section .text {
+  text-align: center;
+}
+
+.catalogue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.catalogue-item-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.catalogue-item-price {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.bouquets-section .primary-button {
+  width: 100%;
+}
+
+/* ==============================================
+   ВІДГУКИ (FEEDBACK)
+   ============================================== */
+.feedback-section .section-title {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.feedbacks-list {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 20px;
+}
+
+.feedbacks-list::-webkit-scrollbar {
+  display: none;
+}
+
+.feedbacks-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  border: 1px solid #D9D9D9;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.feedbacks-item .text {
+  margin-bottom: 59px;
+}
+
+.feedback-person {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* ==============================================
+   КОНТАКТИ (CONTACTS)
+   ============================================== */
+.contacts-connect {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.contacts-subtitle {
+  font-size: 18px;
+  line-height: var(--lh-text);
+  margin-bottom: 24px;
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+  font-style: normal;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-label {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.contact-link,
+.contact-text {
+  font-size: 16px;
+  line-height: var(--lh-text);
+  color: var(--primary-text);
+}
+
+.contact-link {
+  text-decoration: underline;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-link:hover {
+  opacity: 0.7;
+}
+
+.contacts-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ==============================================
+   ПІДВАЛ (FOOTER)
+   ============================================== */
+.footer-section {
+  background-color: #EEEE60;
+  padding: 64px 0 32px;
+  text-align: center;
+}
+
+.footer-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo-link {
+  margin-bottom: 48px;
+}
+
+.footer-navigation-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(3, 12, 1, 0.2);
+  border: none;
+  margin-bottom: 24px;
+}
+
+.footer-copyright {
+  font-size: 14px;
+  color: var(--primary-text);
+  margin-bottom: 0;
+}
+
+/* ==============================================
+   МОБІЛЬНЕ МЕНЮ (Мобільна версія)
+   ============================================== */
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  padding: 96px 0 24px;
+  overflow-y: auto;
+  background-color: var(--primary-bg);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.mobile-menu .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menu-navigation-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+/* ==============================================
+   АДАПТИВ: ПЛАНШЕТ (768px)
+   ============================================== */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .hero-section {
+    min-height: 669px;
+  }
+
+  .hero-section .hero-title,
+  .hero-section .hero-text {
+    max-width: 49%;
+  }
+
+  .hero-section .container {
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding-top: 104.5px;
+  }
+
+  .header-button {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: 24px;
+  }
+
+  .about-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .bestsellers-list, .feedbacks-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 24px) / 2);
+  }
+
+  .catalogue-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .contacts-section .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    align-items: start;
+  }
+
+  .contacts-image {
+    grid-column: 1 / span 2;
+    margin-top: 40px;
+  }
+}
+
+/* ==============================================
+   АДАПТИВ: ДЕСКТОП (1440px)
+   ============================================== */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 80px;
+  }
+
+  .hero-section {
+    background-position: center;
+  }
+
+  .hero-section .hero-title {
+    font-size: 53px;
+    max-width: 667px;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  /* Додано: центрує меню і відштовхує від логотипа */
+  .navigation {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  .navigation-list {
+    display: flex;
+    gap: 32px;
+  }
+
+  .bestsellers-list, .feedbacks-list {
+    grid-auto-columns: calc((100% - 48px) / 3);
+  }
+
+  .catalogue-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-section .container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .footer-logo-link {
+    margin-bottom: 0;
+  }
+}
