@@ -1,48 +1,65 @@
-/* ==============================================
-   ЗМІННІ (Кольори, шрифти, розміри)
-   ============================================== */
+/* ========================================= */
+/* 1. ЗМІННІ (Кольори та Шрифти) */
+/* ========================================= */
 :root {
-  --font-primary: 'Inter', sans-serif;
-  --font-heading: 'Inter', sans-serif;
-  --primary-text: #000000;
-  --primary-bg: #FFFFFF;
-  --secondary-bg: #F5F5F5;
-  --primary-button-bg: #80EB21; /* Зелений колір з макета */
-  --primary-button-text: #000000;
-  --size-text: 16px;
-  --lh-text: 1.5;
-  --size-h2: 34px;
+  --font-primary: 'Roboto', sans-serif;
+  --font-heading: 'Hanuman', serif;
+
+  --size-hero: 36px;
+  --size-h2: 48px;
+  --size-h3: 40px;
+  --size-text: 18px;
+
+  --weight-hero: 400;
+  --weight-h2: 400;
+  --weight-h3: 400;
+  --weight-text: 400;
+
   --lh-heading: 1.2;
-  --size-hero: 53px;
-  --weight-hero: 600;
+  --lh-text: 1.5;
+
+  --primary-text: #030C01;
+  --primary-bg: #FFFFFF;
+  --secondary-bg: #F8F9F8;
+  --primary-button-bg: linear-gradient(90deg, #E8E81C 0%, #42ED13 100%);
+  --primary-button-hover-bg: linear-gradient(90deg, #F3F38D 0%, #A0F689 100%);
+  --primary-button-active-bg: #4A4F46;
+  --primary-button-disabled-bg: linear-gradient(90deg, #FBFBDB 0%, #DDFBD6 100%);
+  --primary-button-text: #030C01;
+  
+  --transition-dur-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ==============================================
-   БАЗОВІ НАЛАШТУВАННЯ
-   ============================================== */
+/* ========================================= */
+/* 2. СКИДАННЯ СТИЛІВ (Reset) */
+/* ========================================= */
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-primary);
+  color: var(--primary-text);
+  background-color: var(--primary-bg);
+  font-size: var(--size-text);
+  line-height: var(--lh-text);
+  overflow-x: hidden;
+}
 
-/* Скидаємо стандартні стилі браузера для посилань та списків */
-a {
-  text-decoration: none;
-  color: inherit;
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-html:has(body.menu-open) {
-  overflow: hidden;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 img {
@@ -51,13 +68,22 @@ img {
   height: auto;
 }
 
-body {
-  font-family: var(--font-primary);
-  color: var(--primary-text);
-  background-color: var(--primary-bg);
-  font-size: var(--size-text);
-  line-height: var(--lh-text);
-  overflow-x: hidden;
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* ========================================= */
+/* 3. БАЗОВІ СТИЛІ ТА КЛАСИ */
+/* ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+html:has(body.menu-open) {
+  overflow: hidden;
 }
 
 .section-wrapper {
@@ -83,9 +109,7 @@ body {
   line-height: var(--lh-heading);
   margin-bottom: 24px;
 }
-/* ==============================================
-   КНОПКИ ТА ПОСИЛАННЯ
-   ============================================== */
+
 .primary-button {
   display: inline-flex;
   align-items: center;
@@ -99,29 +123,28 @@ body {
   color: var(--primary-button-text);
   background: var(--primary-button-bg);
   padding: 8px 20px;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  transition: opacity var(--transition-dur-func), background-color var(--transition-dur-func), transform var(--transition-dur-func);
 }
 
 .primary-button:hover,
 .primary-button:focus-visible {
-  opacity: 0.5;
+  background: var(--primary-button-hover-bg);
 }
 
 .primary-button:active {
-  background: #4E544D;
+  background: var(--primary-button-active-bg);
   color: #FFFFFF;
   opacity: 1;
   transform: scale(0.98);
 }
 
 .primary-button:disabled {
-  opacity: 0.2;
+  background: var(--primary-button-disabled-bg);
   cursor: not-allowed;
 }
 
 .general-link {
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--transition-dur-func);
 }
 
 .general-link:hover,
@@ -129,9 +152,9 @@ body {
   opacity: 0.7;
 }
 
-/* ==============================================
-   ШАПКА (HEADER)
-   ============================================== */
+/* ========================================= */
+/* 4. HEADER */
+/* ========================================= */
 .header {
   padding: 12px 0;
   position: relative;
@@ -163,9 +186,6 @@ body {
   justify-content: center;
   width: 48px;
   height: 48px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
 }
 
 .menu-icon {
@@ -187,16 +207,16 @@ body {
   display: none;
 }
 
-/* ==============================================
-   ГОЛОВНА СЕКЦІЯ (HERO)
-   ============================================== */
+/* ========================================= */
+/* 5. HERO SECTION */
+/* ========================================= */
 .hero-section {
   position: relative;
   z-index: 1;
   padding: 0;
   background-color: var(--secondary-bg);
-  /* Виправлено шлях та формат під твій проєкт */
-  background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('../images/hero-bg.jpg');
+  background-image: url('../images/hero@X1.webp');
+  background-image: -webkit-image-set(url('../images/hero@X1.webp') 1x, url('../images/hero@X2.webp') 2x);
   background-size: cover;
   background-position: calc(50% - 30px) center;
   background-repeat: no-repeat;
@@ -223,7 +243,7 @@ body {
 
 .hero-section .hero-title {
   font-family: var(--font-heading);
-  font-size: 40px;
+  font-size: var(--size-hero);
   font-weight: var(--weight-hero);
   line-height: var(--lh-heading);
   letter-spacing: -0.01em;
@@ -236,9 +256,9 @@ body {
   max-width: 247px;
 }
 
-/* ==============================================
-   ПРО НАС (ABOUT)
-   ============================================== */
+/* ========================================= */
+/* 6. ABOUT SECTION */
+/* ========================================= */
 .about-block {
   display: flex;
   flex-direction: column;
@@ -251,6 +271,14 @@ body {
   gap: 24px;
 }
 
+.about-description {
+  flex: 1;
+}
+
+.about-image {
+  flex: 1;
+}
+
 .about-image-img {
   border-radius: 16px;
   width: 100%;
@@ -259,11 +287,17 @@ body {
   object-position: center;
 }
 
-/* ==============================================
-   ПОПУЛЯРНІ БУКЕТИ (BESTSELLERS)
-   ============================================== */
+/* ========================================= */
+/* 7. BESTSELLERS SECTION (SLIDER) */
+/* ========================================= */
 .bestsellers-section .section-title {
   font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.bestsellers-slider-wrapper {
+  position: relative;
+  overflow: hidden;
   margin-bottom: 32px;
 }
 
@@ -313,9 +347,71 @@ body {
   margin-top: 8px;
 }
 
-/* ==============================================
-   КАТАЛОГ (BOUQUETS)
-   ============================================== */
+.bestsellers-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 53px;
+}
+
+.pagination-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #D9D9D9;
+}
+
+.dot.active {
+  background-color: var(--primary-text);
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.slider-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #D9D9D9;
+  cursor: pointer;
+  color: var(--primary-text);
+  transition: border-color var(--transition-dur-func), background-color var(--transition-dur-func), color var(--transition-dur-func);
+  padding: 0;
+}
+
+.slider-btn:disabled {
+  border-color: #F0F0F0;
+  color: #D3D3D3;
+  cursor: not-allowed;
+}
+
+.slider-btn:not(:disabled):hover,
+.slider-btn:not(:disabled):focus-visible {
+  background-color: #E8E81C;
+  border-color: transparent;
+  color: var(--primary-text);
+}
+
+.slider-btn:not(:disabled):active {
+  background: var(--primary-button-active-bg);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ========================================= */
+/* 8. CATALOG (BOUQUETS) */
+/* ========================================= */
 .bouquets-section .section-title {
   text-align: center;
   margin-bottom: 8px;
@@ -332,6 +428,14 @@ body {
 
 .bouquets-section .text {
   text-align: center;
+}
+
+.catalogue-img {
+  width: 100%;
+  height: 296px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
 }
 
 .catalogue-list {
@@ -364,12 +468,17 @@ body {
   width: 100%;
 }
 
-/* ==============================================
-   ВІДГУКИ (FEEDBACK)
-   ============================================== */
+/* ========================================= */
+/* 9. FEEDBACK SECTION */
+/* ========================================= */
 .feedback-section .section-title {
   text-align: center;
   margin-bottom: 32px;
+}
+
+.feedback-slider-wrapper {
+  position: relative;
+  overflow: hidden;
 }
 
 .feedbacks-list {
@@ -406,9 +515,20 @@ body {
   font-size: 16px;
 }
 
-/* ==============================================
-   КОНТАКТИ (CONTACTS)
-   ============================================== */
+.feedback-pagination-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+/* ========================================= */
+/* 10. CONTACTS SECTION */
+/* ========================================= */
+.contacts-section picture {
+  display: contents;
+}
+
 .contacts-connect {
   font-family: var(--font-primary);
   font-size: 16px;
@@ -436,6 +556,10 @@ body {
   gap: 16px;
 }
 
+.contact-icon {
+  flex-shrink: 0;
+}
+
 .contact-label {
   font-family: var(--font-heading);
   font-size: 18px;
@@ -452,7 +576,7 @@ body {
 
 .contact-link {
   text-decoration: underline;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity var(--transition-dur-func);
 }
 
 .contact-link:hover {
@@ -466,11 +590,11 @@ body {
   border-radius: 16px;
 }
 
-/* ==============================================
-   ПІДВАЛ (FOOTER)
-   ============================================== */
+/* ========================================= */
+/* 11. FOOTER & FOOTER FORM */
+/* ========================================= */
 .footer-section {
-  background-color: #EEEE60;
+  background-color: #F8F9F8;
   padding: 64px 0 32px;
   text-align: center;
 }
@@ -485,6 +609,11 @@ body {
   margin-bottom: 48px;
 }
 
+.footer-logo {
+  width: 294px;
+  height: auto;
+}
+
 .footer-navigation-list {
   display: flex;
   flex-direction: column;
@@ -493,11 +622,54 @@ body {
   margin-bottom: 48px;
 }
 
+.footer-navigation-list a {
+  color: var(--primary-text);
+  font-family: var(--font-primary);
+  font-size: 16px;
+}
+
 .footer-socials {
   display: flex;
   justify-content: center;
   gap: 24px;
   margin-bottom: 32px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Форма підписки у футері */
+.footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.footer-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #D9D9D9;
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--primary-text);
+  outline: none;
+  transition: border-color var(--transition-dur-func);
+}
+
+.footer-form-input::placeholder {
+  color: rgba(3, 12, 1, 0.5);
+}
+
+.footer-form-input:focus {
+  border-color: #42ED13;
+}
+
+.footer-form-btn {
+  width: 100%;
 }
 
 .footer-divider {
@@ -514,9 +686,44 @@ body {
   margin-bottom: 0;
 }
 
-/* ==============================================
-   МОБІЛЬНЕ МЕНЮ (Мобільна версія)
-   ============================================== */
+/* ========================================= */
+/* 12. SCROLL TO TOP */
+/* ========================================= */
+.scroll-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border: 1px solid #D9D9D9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-text);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-dur-func), visibility var(--transition-dur-func), transform var(--transition-dur-func), border-color var(--transition-dur-func), background-color var(--transition-dur-func), color var(--transition-dur-func);
+  z-index: 99;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top.show:hover,
+.scroll-to-top.show:focus-visible {
+  background-color: #E8E81C;
+  border-color: transparent;
+  transform: translateY(-4px);
+}
+
+/* ========================================= */
+/* 13. MOBILE MENU OVERLAY */
+/* ========================================= */
 .mobile-menu {
   display: flex;
   flex-direction: column;
@@ -530,7 +737,7 @@ body {
   padding: 96px 0 24px;
   overflow-y: auto;
   background-color: var(--primary-bg);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition-dur-func);
 }
 
 .mobile-menu.is-open {
@@ -552,10 +759,203 @@ body {
   margin-bottom: 24px;
 }
 
-/* ==============================================
-   АДАПТИВ: ПЛАНШЕТ (768px)
-   ============================================== */
+.menu-action-button {
+  width: 100%;
+}
+
+/* ========================================= */
+/* 14. MODAL & FORM (ЗАНЯТТЯ 15-16) */
+/* ========================================= */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--transition-dur-func), visibility var(--transition-dur-func);
+  z-index: 100;
+}
+
+.backdrop:not(.is-open) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 90%;
+  max-width: 400px;
+  background-color: var(--primary-bg);
+  border-radius: 16px;
+  padding: 40px 24px;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-dur-func);
+}
+
+.backdrop:not(.is-open) .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #F8F9F8;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-dur-func), fill var(--transition-dur-func);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: #E8E81C;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Форма в модалці */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  color: rgba(3, 12, 1, 0.7);
+  margin-bottom: 4px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid rgba(3, 12, 1, 0.2);
+  border-radius: 8px;
+  padding-left: 40px;
+  outline: none;
+  transition: border-color var(--transition-dur-func);
+}
+
+.form-input:focus {
+  border-color: #42ED13;
+}
+
+.form-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: var(--primary-text);
+  transition: fill var(--transition-dur-func);
+}
+
+.form-input:focus + .form-icon {
+  fill: #42ED13;
+}
+
+.form-message {
+  width: 100%;
+  height: 100px;
+  border: 1px solid rgba(3, 12, 1, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  resize: none;
+  outline: none;
+  transition: border-color var(--transition-dur-func);
+  margin-bottom: 16px;
+}
+
+.form-message:focus {
+  border-color: #42ED13;
+}
+
+/* Чекбокс */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-text);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
+  transition: background-color var(--transition-dur-func), border-color var(--transition-dur-func), fill var(--transition-dur-func);
+}
+
+.visually-hidden:checked + .custom-checkbox {
+  background-color: #42ED13;
+  border-color: #42ED13;
+  fill: #FFFFFF;
+}
+
+.checkbox-text {
+  font-size: 14px;
+}
+
+.checkbox-link {
+  color: #42ED13;
+  text-decoration: underline;
+}
+
+.modal-submit-btn {
+  width: 100%;
+}
+
+/* ========================================= */
+/* 15. MEDIA QUERIES (АДАПТИВ) */
+/* ========================================= */
+
+/* Tablet (768px) */
 @media screen and (min-width: 768px) {
+
   .container {
     max-width: 768px;
     padding: 0 32px;
@@ -577,10 +977,22 @@ body {
     padding-top: 104.5px;
   }
 
+  .hero-content {
+    flex: 1;
+  }
+
   .header-button {
     display: inline-flex;
     margin-left: auto;
     margin-right: 24px;
+  }
+
+  body.menu-open .header-button {
+    display: none;
+  }
+
+  .hero-content .primary-button {
+    width: auto;
   }
 
   .about-block {
@@ -589,9 +1001,41 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    padding-top: 60px;
   }
 
-  .bestsellers-list, .feedbacks-list {
+  .about-section .section-title {
+    margin-bottom: 0px;
+  }
+
+  .about-content-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .about-icon {
+    margin-bottom: 40px;
+  }
+
+  .about-description {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-image {
+    flex: 1;
+  }
+
+  .about-image-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+
+  .bestsellers-list {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: calc((100% - 24px) / 2);
@@ -603,6 +1047,23 @@ body {
     gap: 24px;
   }
 
+  .bouquets-section .primary-button {
+    width: 340px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .feedbacks-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 24px) / 2);
+    gap: 24px;
+  }
+
+  .menu-action-button {
+    display: none;
+  }
+
   .contacts-section .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -610,52 +1071,171 @@ body {
     align-items: start;
   }
 
+  .contacts-connect {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contacts-section .section-title {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .contacts-subtitle {
+    grid-column: 1;
+    grid-row: 3;
+    margin-bottom: 0;
+  }
+
+  .contacts-list {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    margin-bottom: 0;
+  }
+
   .contacts-image {
     grid-column: 1 / span 2;
+    grid-row: 4;
     margin-top: 40px;
+    height: 396px;
+  }
+
+  /* Футер форми на планшеті */
+  .footer-form {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 450px;
+  }
+  
+  .footer-form-input {
+    width: 264px;
+  }
+  
+  .footer-form-btn {
+    width: auto;
+  }
+
+  .footer-navigation-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .footer-socials {
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  body.menu-open .header-button {
+    display: none;
+  }
+
+  .menu-navigation-list {
+    align-items: center;
   }
 }
 
-/* ==============================================
-   АДАПТИВ: ДЕСКТОП (1440px)
-   ============================================== */
+/* Large Tablet / Pre-Desktop */
+@media screen and (min-width: 1380px) and (max-width: 1439px) {
+  .hero-section {
+    background-position: right center;
+  }
+}
+
+/* Desktop (1440px) */
 @media screen and (min-width: 1440px) {
+
+  .header {
+    padding: 16px 0;
+  }
+
+  .section-wrapper {
+    padding: 92px 0;
+  }
+
   .container {
     max-width: 1440px;
     padding: 0 80px;
   }
 
+  .section-title {
+    font-size: var(--size-h2);
+  }
+
   .hero-section {
+    padding: 0;
     background-position: center;
+  }
+
+  .hero-section .container {
+    gap: 64px;
+    padding-top: 110.5px;
   }
 
   .hero-section .hero-title {
     font-size: 53px;
+    line-height: 1.2;
+    margin-bottom: 32px;
     max-width: 667px;
+  }
+
+  .hero-section .hero-text {
+    max-width: 667px;
+  }
+
+  .hero-section .hero-content {
+    padding: 80px 0;
   }
 
   .menu-button {
     display: none;
   }
 
-  /* Додано: центрує меню і відштовхує від логотипа */
   .navigation {
     display: flex;
-    flex-grow: 1;
     justify-content: center;
+    flex-grow: 1;
   }
 
   .navigation-list {
     display: flex;
     gap: 32px;
+    font-size: 16px;
   }
 
-  .bestsellers-list, .feedbacks-list {
+  .header-button {
+    display: inline-flex;
+    margin-right: 0;
+  }
+
+  .hero-section {
+    min-height: 669px;
+  }
+
+  .bestsellers-section .section-title {
+    font-size: var(--size-h2);
+  }
+
+  .bestsellers-list {
+    grid-auto-columns: calc((100% - 48px) / 3);
+  }
+
+  .feedbacks-list {
     grid-auto-columns: calc((100% - 48px) / 3);
   }
 
   .catalogue-list {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .contacts-image {
+    height: 720px;
   }
 
   .footer-section .container {
@@ -665,6 +1245,41 @@ body {
   }
 
   .footer-logo-link {
+    grid-column: 1;
+    grid-row: 1;
     margin-bottom: 0;
+  }
+
+  .footer-navigation-list {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .footer-form {
+    grid-column: 3;
+    grid-row: 1;
+    margin-bottom: 0;
+  }
+
+  .footer-socials {
+    grid-column: 3;
+    grid-row: 2;
+    margin-left: auto;
+    margin-bottom: 0;
+    margin-top: 24px;
+  }
+
+  .footer-divider {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    margin-top: 80px;
+  }
+
+  .footer-copyright {
+    grid-column: 1 / span 3;
+    grid-row: 4;
+    padding-bottom: 40px;
   }
 }
