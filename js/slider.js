@@ -71,7 +71,24 @@ const setupSlider = (wrapperSelector, listSelector, prevSelector, nextSelector, 
       const itemWidth = list.children[0].getBoundingClientRect().width;
       const gap = parseFloat(window.getComputedStyle(list).gap) || 0;
       list.scrollBy({ left: itemWidth + gap, behavior: 'smooth' });
+    });// Функція для визначення поточної картки на екрані
+  const getCurrentIndex = () => {
+    const itemWidth = list.children[0].getBoundingClientRect().width;
+    const gap = parseFloat(window.getComputedStyle(list).gap) || 0;
+    return Math.round(list.scrollLeft / (itemWidth + gap));
+  };
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      scrollToItem(getCurrentIndex() - 1); // Завжди рівно на 1 назад
     });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      scrollToItem(getCurrentIndex() + 1); // Завжди рівно на 1 вперед
+    });
+  }
   }
 
   if (dots.length) {
@@ -100,18 +117,24 @@ const setupSlider = (wrapperSelector, listSelector, prevSelector, nextSelector, 
   updateButtons();
 };
 
-setupSlider(
-  '.bestsellers-slider-wrapper',
-  '.bestsellers-list',
-  '.prev-btn',
-  '.next-btn',
-  '.pagination-dots'
-);
+// Загортаємо виклики у функцію, щоб запустити їх ПІСЛЯ завантаження букетів
+window.initSliders = () => {
+  setupSlider(
+    '.bestsellers-slider-wrapper',
+    '.bestsellers-list',
+    '.prev-btn',
+    '.next-btn',
+    '.pagination-dots'
+  );
 
-setupSlider(
-  '.feedback-slider-wrapper',
-  '.feedbacks-list',
-  '.prev-btn',
-  '.next-btn',
-  '.pagination-dots'
-);
+  setupSlider(
+    '.feedback-slider-wrapper',
+    '.feedbacks-list',
+    '.prev-btn',
+    '.next-btn',
+    '.pagination-dots'
+  );
+};
+
+// Запускаємо слайдер для статики (відгуків)
+window.initSliders();

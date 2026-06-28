@@ -1,0 +1,62 @@
+{
+  "bestsellers": [
+    {
+      "id": "1",
+      "title": "Spring Elegance",
+      "description": "A delicate blend of peonies, tulips, and roses.",
+      "price": 35,
+      "image1x": "./images/top-bouquet-1@X1.webp",
+      "image2x": "./images/top-bouquet-1@X2.webp"
+    },
+    {
+      "id": "2",
+      "title": "Berry Chic",
+      "description": "A stylish composition of roses and vibrant berries.",
+      "price": 40,
+      "image1x": "./images/top-bouquet-2@X1.webp",
+      "image2x": "./images/top-bouquet-2@X2.webp"
+    },
+    {
+      "id": "3",
+      "title": "Lavender Dream",
+      "description": "A rich bouquet with lavender and lisianthus.",
+      "price": 55,
+      "image1x": "./images/top-bouquet-3@X1.webp",
+      "image2x": "./images/top-bouquet-3@X2.webp"
+    }
+  ],
+  "bouquets": [
+    {
+      "id": "1", "title": "Peach Meadow", "description": "", "price": 55,
+      "image1x": "./images/bouquet-1@X1.webp", "image2x": "./images/bouquet-1@X2.webp"
+    },
+    {
+      "id": "2", "title": "Blush Romance", "description": "", "price": 34,
+      "image1x": "./images/bouquet-2@X1.webp", "image2x": "./images/bouquet-2@X2.webp"
+    },
+    {
+      "id": "3", "title": "Pastel Garden", "description": "", "price": 40,
+      "image1x": "./images/bouquet-3@X1.webp", "image2x": "./images/bouquet-3@X2.webp"
+    },
+    {
+      "id": "4", "title": "Tulip Charm", "description": "", "price": 61,
+      "image1x": "./images/bouquet-4@X1.webp", "image2x": "./images/bouquet-4@X2.webp"
+    },
+    {
+      "id": "5", "title": "Berry Bloom", "description": "", "price": 32,
+      "image1x": "./images/bouquet-5@X1.webp", "image2x": "./images/bouquet-5@X2.webp"
+    },
+    {
+      "id": "6", "title": "Sweet Whisper", "description": "", "price": 40,
+      "image1x": "./images/bouquet-6@X1.webp", "image2x": "./images/bouquet-6@X2.webp"
+    },
+    {
+      "id": "7", "title": "Field Joy", "description": "", "price": 49,
+      "image1x": "./images/bouquet-7@X1.webp", "image2x": "./images/bouquet-7@X2.webp"
+    },
+    {
+      "id": "8", "title": "Soft Bloom", "description": "", "price": 37,
+      "image1x": "./images/bouquet-8@X1.webp", "image2x": "./images/bouquet-8@X2.webp"
+    }
+  ]
+}
