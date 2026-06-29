@@ -3,7 +3,7 @@ const bestsellersContainer = document.getElementById('bestsellers-container');
 const bouquetsContainer = document.getElementById('bouquets-container');
 
 // Адреса твого нового бекенду (переконайся, що сервер запущений на цьому порту)
-const BASE_URL = 'https://flora-backend-le9i.onrender.com/api';
+const BASE_URL = '//flora-backend-le9i.onrender.com/api';
 
 // Асинхронна функція для отримання та відмальовування даних
 async function fetchAndRenderData() {
